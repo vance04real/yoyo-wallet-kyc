@@ -1,9 +1,6 @@
 package za.co.yoyowallet.kyc.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -13,6 +10,7 @@ import java.io.Serializable;
  **/
 
 @Entity
+@Table(name="CUSTOMER")
 public class Customer implements Serializable {
 
     @Id
