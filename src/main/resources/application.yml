@@ -1,0 +1,60 @@
+server:
+  port: 9099
+spring:
+  profiles:
+    active: dev
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: ERROR
+      hibernate: ERROR
+    za.co.wonderlabz: DEBUG
+  pattern:
+    file: '%d - %-5level %logger{36} - %msg%n'
+    console: '%d - %-5level %logger{36} - %msg%n'
+  file:
+    name: /data/logs/yoyowallet/kyc-api.log
+---
+
+spring:
+  h2:
+    console:
+      enabled: true
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: h2
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 400
+      idle-timeout: 30000
+      minimum-idle: 20
+    initialization-mode: always
+    driver-class-name: org.h2.Driver
+
+management:
+  security:
+    enabled: false
+  server:
+    port: 9999
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+---
