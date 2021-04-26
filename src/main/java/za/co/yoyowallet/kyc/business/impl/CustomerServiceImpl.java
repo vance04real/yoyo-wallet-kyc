@@ -4,10 +4,13 @@ import za.co.yoyowallet.kyc.business.api.CustomerService;
 import za.co.yoyowallet.kyc.domain.Customer;
 import za.co.yoyowallet.kyc.repository.CustomerRepository;
 import za.co.yoyowallet.kyc.utils.CommonResponse;
+import za.co.yoyowallet.kyc.utils.Dtos.CustomerDto;
+import za.co.yoyowallet.kyc.utils.exceptions.CustomerException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -32,12 +35,24 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Supplier<CommonResponse> getAllCustomer() {
-        Supplier<CommonResponse> response =  CommonResponse::new;
-        response.get().setList(customerRepository.findAll());
-        response.get().setSuccess(true);
-        response.get().setNarrative("Successfully Retrieved all Customer");
+    public CommonResponse getAllCustomer() {
+        CommonResponse response =  new CommonResponse();
+        List<Customer> customerList = customerRepository.findAll();
+        if(customerList.isEmpty())
+            throw new CustomerException("There are no customers to be retrieved");
+        response.setList( customerList.stream().map(this::convertCustomer).collect(Collectors.toList()));
+        response.setSuccess(true);
+        response.setNarrative("Successfully Retrieved all Customer");
         return response;
     }
+
+    private CustomerDto convertCustomer(Customer customer) {
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setName(customer.getName());
+        customerDto.setSurname(customer.getSurname());
+        customerDto.setEmail(customer.getEmail());
+        return customerDto;
+    }
+
 
 }

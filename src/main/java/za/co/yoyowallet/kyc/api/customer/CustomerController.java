@@ -1,6 +1,7 @@
 package za.co.yoyowallet.kyc.api.customer;
 
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import za.co.yoyowallet.kyc.business.api.CustomerService;
 import za.co.yoyowallet.kyc.domain.Customer;
@@ -24,13 +25,13 @@ public class CustomerController {
 
     @PostMapping("create")
     @ApiOperation(value = "Creating a Customer endpoint",response = CommonResponse.class)
-    public CommonResponse createCustomer(@RequestBody Customer customer){
+    public CommonResponse createCustomer(@RequestBody @Validated Customer customer){
         return customerService.createCustomer(customer);
     }
 
     @GetMapping("all")
     @ApiOperation(value = "Creating a Customer endpoint",response = CommonResponse.class)
     public CommonResponse findAllCustomer(){
-        return (CommonResponse) customerService.getAllCustomer();
+        return customerService.getAllCustomer();
     }
 }

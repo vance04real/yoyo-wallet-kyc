@@ -15,5 +15,5 @@ import java.util.stream.Stream;
 public interface CustomerService {
 
     CommonResponse createCustomer(Customer customer);
-    Supplier<CommonResponse> getAllCustomer();
+    CommonResponse getAllCustomer();
 }
