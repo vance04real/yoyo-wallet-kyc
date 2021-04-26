@@ -12,7 +12,7 @@ import za.co.yoyowallet.kyc.utils.messages.CommonResponse;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Created  26/04/2021 - 11:05
+ * Created  26/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

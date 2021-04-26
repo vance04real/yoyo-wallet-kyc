@@ -9,7 +9,7 @@ import za.co.yoyowallet.kyc.domain.Customer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Created  26/04/2021 - 10:51
+ * Created  26/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

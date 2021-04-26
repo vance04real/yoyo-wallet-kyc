@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created  26/04/2021 - 10:51
+ * Created  26/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

@@ -10,7 +10,7 @@ import za.co.yoyowallet.kyc.business.impl.CustomerServiceImpl;
 import za.co.yoyowallet.kyc.repository.CustomerRepository;
 
 /**
- * Created  25/04/2021 - 22:39
+ * Created  25/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

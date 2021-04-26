@@ -1,9 +1,8 @@
 package za.co.yoyowallet.kyc.utils.Dtos;
 
-import javax.persistence.Column;
 
 /**
- * Created  26/04/2021 - 09:08
+ * Created  26/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

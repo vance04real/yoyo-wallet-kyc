@@ -1,9 +1,7 @@
 package za.co.yoyowallet.kyc.utils.messages;
 
-import java.util.List;
-
 /**
- * Created  25/04/2021 - 23:13
+ * Created  25/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

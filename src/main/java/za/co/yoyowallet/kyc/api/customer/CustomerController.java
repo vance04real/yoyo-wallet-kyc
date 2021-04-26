@@ -11,7 +11,7 @@ import za.co.yoyowallet.kyc.utils.Dtos.CustomerDto;
 import za.co.yoyowallet.kyc.utils.messages.CustomerResponse;
 
 /**
- * Created  25/04/2021 - 23:15
+ * Created  25/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

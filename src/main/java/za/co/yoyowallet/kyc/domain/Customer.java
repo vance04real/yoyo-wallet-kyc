@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created  25/04/2021 - 21:29
+ * Created  25/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

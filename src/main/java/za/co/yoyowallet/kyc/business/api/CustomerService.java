@@ -8,7 +8,7 @@ import za.co.yoyowallet.kyc.utils.messages.CustomerResponse;
 
 
 /**
- * Created  25/04/2021 - 22:50
+ * Created  25/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/
