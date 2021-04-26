@@ -2,6 +2,8 @@ package za.co.yoyowallet.kyc.repository;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import za.co.yoyowallet.kyc.domain.Customer;
@@ -16,16 +18,17 @@ import static org.junit.Assert.assertNotNull;
  **/
 
 @DataJpaTest
+@Disabled
 public class CustomerRepositoryUnitTest {
     private Customer customer;
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Before
+    @BeforeEach
     public void setup(){
         customer = new Customer();
-        customer.setName("mal");
-        customer.setSurname("3rn");
+        customer.setName("Evans");
+        customer.setSurname("Chikuni");
         customer.setEmail("echikuni@gmail.com");
     }
 

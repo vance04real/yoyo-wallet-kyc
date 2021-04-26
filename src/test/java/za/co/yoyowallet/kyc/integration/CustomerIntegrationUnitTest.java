@@ -1,8 +1,8 @@
 package za.co.yoyowallet.kyc.integration;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
@@ -17,14 +17,18 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Author   Evans K F C
  **/
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Disabled
 public class CustomerIntegrationUnitTest {
 
-    @Autowired
+
     private TestRestTemplate testRestTemplate;
 
     private Customer customer;
-    @Before
+
+    @BeforeEach
     public void setup(){
+
+        testRestTemplate = new TestRestTemplate();
         customer = new Customer();
         customer.setName("Evans");
         customer.setSurname("Chikuni");
@@ -33,7 +37,7 @@ public class CustomerIntegrationUnitTest {
 
     @Test
     public void createCustomerShouldReturnSuccess() throws Exception{
-        final String baseUrl = "/api/create";
+        final String baseUrl = "http://localhost:9099/api/customer/create";
         ResponseEntity<CommonResponse> response = testRestTemplate.
                 exchange(baseUrl, HttpMethod.POST, new HttpEntity<>(customer,httpHeaders()),CommonResponse.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

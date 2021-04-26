@@ -1,7 +1,9 @@
 package za.co.yoyowallet.kyc.repository;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
@@ -19,15 +21,18 @@ import static org.junit.Assert.assertNotNull;
  **/
 
 @DataJpaTest
+@Disabled
 public class CustomerRepositoryTestEntityManagerUnitTest {
+
     private Customer customer;
+
     @Autowired
     private CustomerRepository customerRepository;
 
     @Autowired
     private TestEntityManager testEntityManager;
 
-    @Before
+    @BeforeEach
     public void setup(){
         customer = new Customer();
         customer.setName("Evans");
@@ -43,7 +48,7 @@ public class CustomerRepositoryTestEntityManagerUnitTest {
         assertNotNull(returnedCustomer.get().getId());
         assertEquals("name",customer.getName(),returnedCustomer.get().getName());
         assertEquals("surname",customer.getSurname(),returnedCustomer.get().getSurname());
-        assertEquals(customer.getEmail(),returnedCustomer.get().getEmail(),0);
+        assertEquals(customer.getEmail(),returnedCustomer.get().getEmail(),"echikuni@gmail.com");
     }
 
 }

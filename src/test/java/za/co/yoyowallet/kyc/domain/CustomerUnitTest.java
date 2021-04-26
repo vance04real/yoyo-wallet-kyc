@@ -1,7 +1,10 @@
 package za.co.yoyowallet.kyc.domain;
 
-import org.junit.Before;
-import org.junit.Test;
+
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -14,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
 public class CustomerUnitTest {
     private Customer customer;
 
-    @Before
+    @BeforeEach
     public void setup(){
         customer = new Customer();
         customer.setName("Evans");
@@ -27,6 +30,6 @@ public class CustomerUnitTest {
         assertNotNull(customer);
         assertEquals("name","Evans",customer.getName());
         assertEquals("surname","Chikuni",customer.getSurname());
-        assertEquals("echikuni@gmail.com",customer.getSurname(),0);
+        assertEquals("echikuni@gmail.com",customer.getEmail(),"echikuni@gmail.com");
     }
 }

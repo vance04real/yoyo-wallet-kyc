@@ -1,7 +1,8 @@
 package za.co.yoyowallet.kyc.business;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import za.co.yoyowallet.kyc.business.api.CustomerService;
 import za.co.yoyowallet.kyc.business.impl.CustomerServiceImpl;
@@ -12,7 +13,10 @@ import za.co.yoyowallet.kyc.utils.messages.CommonResponse;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static za.co.yoyowallet.kyc.util.TestData.getCustomer;
+import static za.co.yoyowallet.kyc.util.TestData.getCustomerDto;
 
 /**
  * Created  26/04/2021
@@ -25,32 +29,30 @@ public class CustomerServiceUnitTest {
 
     private CustomerService customerService;
 
-    private Customer customer;
 
-    private CustomerDto customerDto;
-
-
-    @Before
+    @BeforeEach
     public void setup(){
+        customerRepository = mock(CustomerRepository.class);
         customerService = new CustomerServiceImpl(customerRepository);
-        customer = new Customer();
-        customer.setName("Evans");
-        customer.setSurname("Chikuni");
-        customer.setEmail("echikuni@gmail.com");
-
-        customerDto = new CustomerDto();
-        customerDto.setName("Evans");
-        customerDto.setSurname("Chikuni");
-        customerDto.setEmail("echikuni@gmail.com");
     }
 
 
     @Test
-    public void givenCustomerWhenCreatingCustomerThenReturnCustomer(){
-        when(customerRepository.save(customer)).thenReturn(customer);
-        final CommonResponse response  = customerService.createCustomer(customerDto);
+    public void givenCustomerWhenCreatingCustomerThenReturnSuccessResponse(){
+        when(customerRepository.save(any(Customer.class))).thenReturn(getCustomer());
+        final CommonResponse response  = customerService.createCustomer(getCustomerDto());
         assertNotNull(response);
         assertEquals("narrative","account created",response.getNarrative());
         assertEquals("success",true,response.isSuccess());
+        verify(customerRepository,times(1)).save(any(Customer.class));
+    }
+
+    @Test
+    public void givenCustomerWhenCreatingCustomerThenReturnFailedResponse(){
+        final CommonResponse response  = customerService.createCustomer(null);
+        assertNotNull(response);
+        assertEquals("narrative","Account Not created",response.getNarrative());
+        assertEquals("success",false,response.isSuccess());
+
     }
 }

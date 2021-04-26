@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CommonResponse createCustomer(CustomerDto customerDto) {
         final CommonResponse response = new CommonResponse();
         if(customerDto == null){
-            response.setNarrative("Account Not created ");
+            response.setNarrative("Account Not created");
             return response;
         }
 
