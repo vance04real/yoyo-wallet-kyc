@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 /**
- * Created  26/04/2021 - 11:00
+ * Created  26/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

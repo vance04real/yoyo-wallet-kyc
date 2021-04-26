@@ -7,14 +7,12 @@ import za.co.yoyowallet.kyc.domain.Customer;
 import za.co.yoyowallet.kyc.repository.CustomerRepository;
 import za.co.yoyowallet.kyc.utils.messages.CommonResponse;
 import za.co.yoyowallet.kyc.utils.Dtos.CustomerDto;
-import za.co.yoyowallet.kyc.utils.exceptions.CustomerException;
 import za.co.yoyowallet.kyc.utils.messages.CustomerResponse;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created  25/04/2021 - 22:51
+ * Created  25/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/

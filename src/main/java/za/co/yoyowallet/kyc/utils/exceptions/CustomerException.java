@@ -1,7 +1,7 @@
 package za.co.yoyowallet.kyc.utils.exceptions;
 
 /**
- * Created  26/04/2021 - 06:53
+ * Created  26/04/2021
  * Project  kyc
  * Author   Evans K F C
  **/
