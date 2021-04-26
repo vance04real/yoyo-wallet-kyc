@@ -1,11 +1,10 @@
 package za.co.yoyowallet.kyc.domain;
 
-import org.springframework.util.StringUtils;
-import za.co.yoyowallet.kyc.utils.enums.EntityStatus;
 
+import za.co.yoyowallet.kyc.utils.enums.EntityStatus;
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.*;
+
 
 /**
  * Created  25/04/2021 - 23:53

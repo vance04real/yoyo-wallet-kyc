@@ -1,11 +1,11 @@
 package za.co.yoyowallet.kyc.business.api;
 
-import za.co.yoyowallet.kyc.domain.Customer;
-import za.co.yoyowallet.kyc.utils.CommonResponse;
+import org.springframework.data.domain.Pageable;
+import za.co.yoyowallet.kyc.utils.messages.CommonResponse;
+import za.co.yoyowallet.kyc.utils.Dtos.CustomerDto;
+import za.co.yoyowallet.kyc.utils.messages.CustomerResponse;
 
-import javax.websocket.server.PathParam;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+
 
 /**
  * Created  25/04/2021 - 22:50
@@ -14,6 +14,6 @@ import java.util.stream.Stream;
  **/
 public interface CustomerService {
 
-    CommonResponse createCustomer(Customer customer);
-    CommonResponse getAllCustomer();
+    CommonResponse createCustomer(CustomerDto customerDto);
+    CustomerResponse getAllCustomer(Pageable pageable);
 }

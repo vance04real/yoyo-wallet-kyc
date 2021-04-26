@@ -1,4 +1,4 @@
-package za.co.yoyowallet.kyc.utils;
+package za.co.yoyowallet.kyc.utils.messages;
 
 import java.util.List;
 
@@ -7,19 +7,9 @@ import java.util.List;
  * Project  kyc
  * Author   Evans K F C
  **/
-public class CommonResponse <T> {
+public class CommonResponse {
     private String narrative;
     private boolean success;
-    private List<T> list;
-
-    public List<T> getList() {
-        return list;
-    }
-
-    public void setList(List<T> list) {
-        this.list = list;
-    }
-
     public String getNarrative() {
 
         return narrative;

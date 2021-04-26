@@ -1,17 +1,17 @@
 package za.co.yoyowallet.kyc.business.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import za.co.yoyowallet.kyc.business.api.CustomerService;
 import za.co.yoyowallet.kyc.domain.Customer;
 import za.co.yoyowallet.kyc.repository.CustomerRepository;
-import za.co.yoyowallet.kyc.utils.CommonResponse;
+import za.co.yoyowallet.kyc.utils.messages.CommonResponse;
 import za.co.yoyowallet.kyc.utils.Dtos.CustomerDto;
 import za.co.yoyowallet.kyc.utils.exceptions.CustomerException;
+import za.co.yoyowallet.kyc.utils.messages.CustomerResponse;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created  25/04/2021 - 22:51
@@ -26,21 +26,31 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CommonResponse createCustomer(Customer customer) {
+    public CommonResponse createCustomer(CustomerDto customerDto) {
         final CommonResponse response = new CommonResponse();
-        final Customer savedCustomer = customerRepository.save(customer);
+        if(customerDto == null){
+            response.setNarrative("Account Not created ");
+            return response;
+        }
+
+        Customer customer = convertCustomerDtoToCustomer(customerDto);
+        customerRepository.save(customer);
         response.setNarrative("account created");
         response.setSuccess(true);
         return response;
     }
 
     @Override
-    public CommonResponse getAllCustomer() {
-        CommonResponse response =  new CommonResponse();
-        List<Customer> customerList = customerRepository.findAll();
-        if(customerList.isEmpty())
-            throw new CustomerException("There are no customers to be retrieved");
-        response.setList( customerList.stream().map(this::convertCustomer).collect(Collectors.toList()));
+    public CustomerResponse getAllCustomer(Pageable pageable) {
+        CustomerResponse response =  new CustomerResponse();
+        Page<Customer> customerPageList = customerRepository.findAll(pageable);
+        if(customerPageList.getContent().isEmpty()){
+          response.setNarrative("No results Found");
+          return response;
+        }
+
+        response.setList(customerPageList.getContent().stream().map(this::convertCustomer).collect(Collectors.toList()));
+        response.setTotalPages((long) customerPageList.getTotalPages());
         response.setSuccess(true);
         response.setNarrative("Successfully Retrieved all Customer");
         return response;
@@ -52,6 +62,15 @@ public class CustomerServiceImpl implements CustomerService {
         customerDto.setSurname(customer.getSurname());
         customerDto.setEmail(customer.getEmail());
         return customerDto;
+    }
+
+    private Customer convertCustomerDtoToCustomer(CustomerDto customerDto){
+        Customer customer = new Customer();
+        customer.setName(customerDto.getName());
+        customer.setSurname(customerDto.getSurname());
+        customer.setEmail(customerDto.getEmail());
+        return customer;
+
     }
 
 
