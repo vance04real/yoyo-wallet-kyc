@@ -11,14 +11,28 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="CUSTOMER")
-public class Customer implements Serializable {
+public class Customer extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+    @Column(name="name", nullable=false, length=200)
     private String name;
+
+    @Column(name="surname", nullable=false, length=200)
     private String surname;
-    private Long age;
+
+    @Column(name="email", nullable=false, length=200)
+    private String email;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -36,28 +50,31 @@ public class Customer implements Serializable {
         this.surname = surname;
     }
 
-    public Long getAge() {
-        return age;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAge(Long age) {
-        this.age = age;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Long getId() {
-        return id;
+    @PrePersist
+    protected void init() {
+        super.prePersist();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @PreUpdate
+    protected void reload() {
+        super.preUpdate();
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

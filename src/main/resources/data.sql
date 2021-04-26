@@ -1,4 +1,4 @@
-INSERT INTO TABLE CUSTOMER (name, surname, age) VALUES
-    ('Josh', 'Long', 35),
-    ('John', 'Stones', 34),
-    ('Evans', 'Chikuni', 36);
+INSERT INTO TABLE CUSTOMER (name, surname, email) VALUES
+('Evans', 'Java', 'ejava@gmail.com'),
+('Kenneth', 'TypeScript', 'ktypescript@easports.com'),
+('Farai', 'Golang', 'fgolang@needforspeed.com');

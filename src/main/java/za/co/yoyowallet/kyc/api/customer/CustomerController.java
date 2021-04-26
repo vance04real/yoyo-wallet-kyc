@@ -24,7 +24,13 @@ public class CustomerController {
 
     @PostMapping("create")
     @ApiOperation(value = "Creating a Customer endpoint",response = CommonResponse.class)
-    public CommonResponse createAccount(@RequestBody Customer customer){
+    public CommonResponse createCustomer(@RequestBody Customer customer){
         return customerService.createCustomer(customer);
+    }
+
+    @GetMapping("all")
+    @ApiOperation(value = "Creating a Customer endpoint",response = CommonResponse.class)
+    public CommonResponse findAllCustomer(){
+        return (CommonResponse) customerService.getAllCustomer();
     }
 }

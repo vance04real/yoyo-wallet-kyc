@@ -5,6 +5,11 @@ import za.co.yoyowallet.kyc.domain.Customer;
 import za.co.yoyowallet.kyc.repository.CustomerRepository;
 import za.co.yoyowallet.kyc.utils.CommonResponse;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+
 /**
  * Created  25/04/2021 - 22:51
  * Project  kyc
@@ -25,4 +30,14 @@ public class CustomerServiceImpl implements CustomerService {
         response.setSuccess(true);
         return response;
     }
+
+    @Override
+    public Supplier<CommonResponse> getAllCustomer() {
+        Supplier<CommonResponse> response =  CommonResponse::new;
+        response.get().setList(customerRepository.findAll());
+        response.get().setSuccess(true);
+        response.get().setNarrative("Successfully Retrieved all Customer");
+        return response;
+    }
+
 }

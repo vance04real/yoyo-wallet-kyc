@@ -1,5 +1,6 @@
 package za.co.yoyowallet.kyc.config;
 
+
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,6 @@ public class BusinessConfig {
 
     @Bean
     public CustomerService customerService(final CustomerRepository customerRepository){
-        return new CustomerServiceImpl(customerRepository, customerRepository1);
+        return new CustomerServiceImpl(customerRepository);
     }
 }
